@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node
+        uses: actions/setup-node@v3
         with:
           node-version: 18
 
@@ -24,8 +24,12 @@ jobs:
       - name: Build Electron app for macOS
         run: npm run build
 
+      - name: List dist directory (for debugging)
+        run: ls -la dist/
+
       - name: Upload build artifacts
-        uses: actions/upload-artifact
+        uses: actions/upload-artifact@v3
         with:
           name: macos-build
           path: dist/
+
